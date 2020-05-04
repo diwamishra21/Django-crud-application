@@ -3,11 +3,13 @@ Prerequisites before using Django-
 Applications need to install- Python and python virtual environment
 
 a. Download and Install python
+
 b. Create virtual environment(pip should be installed(check version- pip --version))
 Install either virtualenvwrapper or virtualenv(for more info goto- link)
 install virtual environment- pip install virtualenv
 Create virtual environment- virtualenv <virtual-env>
 Now activate virtual env - cd <virtual-env>/Scripts/activate
+
 c. Install Django using command -
 pip install django
 Check django version command-
