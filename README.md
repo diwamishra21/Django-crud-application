@@ -132,165 +132,17 @@ urlpatterns = [
 ]
 
 9. Organize Templates
-Create a templates folder inside the employee app and create three (index, edit, show) html files inside the directory. The code for each is given below.
+Create a templates folder inside the employee app and create three (index, edit, show) html files inside the directory. files are-
 // index.html
-{% extends 'base.html' %}
-
-{% block content %}
-<form method="POST" class="post-form" action="/emp">
-        {% csrf_token %}
-    <div class="container">
-<br>
-    <div class="form-group row">
-    <label class="col-sm-1 col-form-label"></label>
-    <div class="col-sm-4">
-    <h3>Enter Details</h3>
-    </div>
-  </div>
-    <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Employee Id:</label>
-    <div class="col-sm-4">
-      {{ form.eid }}
-    </div>
-  </div>
-  <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Employee Name:</label>
-    <div class="col-sm-4">
-      {{ form.ename }}
-    </div>
-  </div>
-    <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Employee Email:</label>
-    <div class="col-sm-4">
-      {{ form.eemail }}
-    </div>
-  </div>
-    <div class="form-group row">
-    <label class="col-sm-2 col-form-label">Employee Contact:</label>
-    <div class="col-sm-4">
-      {{ form.econtact }}
-    </div>
-  </div>
-    <div class="form-group row">
-    <label class="col-sm-1 col-form-label"></label>
-    <div class="col-sm-4">
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </div>
-    </div>
-</form>
-{% endblock content %}
-
 // show.html
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>Employee Records</title>  
-     {% load staticfiles %}  
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
-</head>  
-<body>  
-<table class="table table-striped table-bordered table-sm">  
-    <thead class="thead-dark">  
-    <tr>  
-        <th>Employee ID</th>  
-        <th>Employee Name</th>  
-        <th>Employee Email</th>  
-        <th>Employee Contact</th>  
-        <th>Actions</th>  
-    </tr>  
-    </thead>  
-    <tbody>  
-{% for employee in employees %}  
-    <tr>  
-        <td>{{ employee.eid }}</td>  
-        <td>{{ employee.ename }}</td>  
-        <td>{{ employee.eemail }}</td>  
-        <td>{{ employee.econtact }}</td>  
-        <td>  
-            <a href="/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ employee.id }}">Delete</a>  
-        </td>  
-    </tr>  
-{% endfor %}  
-    </tbody>  
-</table>  
-<br>  
-<br>  
-<center><a href="/emp" class="btn btn-primary">Add New Record</a></center>  
-</body>  
-</html>  
-// edit.html
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>Index</title>  
-    {% load staticfiles %}  
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
-</head>  
-<body>  
-<form method="POST" class="post-form" action="/update/{{employee.id}}">  
-        {% csrf_token %}  
-    <div class="container">  
-<br>  
-    <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
-    <h3>Update Details</h3>  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Id:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="eid" id="id_eid" required maxlength="20" value="{{ employee.eid }}"/>  
-    </div>  
-  </div>  
-  <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Name:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="ename" id="id_ename" required maxlength="100" value="{{ employee.ename }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Email:</label>  
-    <div class="col-sm-4">  
-        <input type="email" name="eemail" id="id_eemail" required maxlength="254" value="{{ employee.eemail }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Contact:</label>  
-    <div class="col-sm-4">  
-        <input type="text" name="econtact" id="id_econtact" required maxlength="15" value="{{ employee.econtact }}" />  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
-    <button type="submit" class="btn btn-success">Update</button>  
-    </div>  
-  </div>  
-    </div>  
-</form>  
-</body>  
-</html>  
-10. Static Files Handling
-Create a folder static/css/style.css inside the employee app and put a css inside it. Css-
-body {font:12px/1.4 Verdana,Arial; background:#A9A9A9; height:100%; margin:25px 0; padding:0}
-h1 {font:24px Georgia,Verdana; margin:0}
-h2 {font-size:12px; font-weight:normal; font-style:italic; margin:0 0 20px}
-p {margin-top:0}
-ul {margin:0; padding-left:20px}
+//edit.html
 
-#testdiv {width:600px; margin:0 auto; border:1px solid #ccc; padding:20px 25px; background:#fff}
+10. Now create css, create a static/css folder in main directory parallel to manage.py and create a file style.css in it.
+and now tell djnago about your css file, run command-
+python manage.py collectstatic
+(it will create a folder assets in main directory with your css file in it. You should run this command always after making changes in your css, js or images.)
 
-#tinybox {position:absolute; display:none; padding:10px; background:#fff url(images/preload.gif) no-repeat 50% 50%; border:10px solid #e3e3e3; z-index:2000}
-#tinymask {position:absolute; display:none; top:0; left:0; height:100%; width:100%; background:#000; z-index:1500}
-#tinycontent {background:#fff}
 
-.button {font:14px Georgia,Verdana; margin-bottom:10px; padding:8px 10px 9px; border:1px solid #ccc; background:#eee; cursor:pointer}
-.button:hover {border:1px solid #bbb; background:#e3e3e3}
 11. Project Structure
 Crudexample->
 	__init__.py
@@ -346,6 +198,11 @@ Access the application by entering localhost:8000/, it will show all the availab
 Initially, there is no record. So, it shows no record message. 
 Well, we have successfully created a CRUD application using Django.
 This complete project can be downloaded here.( https://github.com/diwamishra21/Django-crud-application)
+
+13. Accessing admin panel, for that you have to create a super user using command-
+python manage.py createsuperuser
+(than follow instructions)
+
 
 Debugging-
 
