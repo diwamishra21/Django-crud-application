@@ -74,7 +74,8 @@ class EmployeeForm(forms.ModelForm):
 from django.shortcuts import render, redirect  
 from employee.forms import EmployeeForm  
 from employee.models import Employee  
-# Create your views here.  
+
+Create your views here.  
 def emp(request):  
     if request.method == "POST":  
         form = EmployeeForm(request.POST)  
@@ -104,6 +105,7 @@ def destroy(request, id):
     employee = Employee.objects.get(id=id)  
     employee.delete()  
     return redirect("/show")  
+
 8. Provide Routing
 Provide URL patterns to map with views function.
 // urls.py
@@ -114,6 +116,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
       path('', include('employee.urls')),
 ]  
+
 8.1 Creating routing for employee urls
 // employee/urls.py
 from django.urls import path
@@ -131,59 +134,53 @@ urlpatterns = [
 9. Organize Templates
 Create a templates folder inside the employee app and create three (index, edit, show) html files inside the directory. The code for each is given below.
 // index.html
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>Index</title>  
-    {% load staticfiles %}  
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
-</head>  
-<body>  
-<form method="POST" class="post-form" action="/emp">  
-        {% csrf_token %}  
-    <div class="container">  
-<br>  
-    <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
-    <h3>Enter Details</h3>  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Id:</label>  
-    <div class="col-sm-4">  
-      {{ form.eid }}  
-    </div>  
-  </div>  
-  <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Name:</label>  
-    <div class="col-sm-4">  
-      {{ form.ename }}  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Email:</label>  
-    <div class="col-sm-4">  
-      {{ form.eemail }}  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Contact:</label>  
-    <div class="col-sm-4">  
-      {{ form.econtact }}  
-    </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
-    <div class="col-sm-4">  
-    <button type="submit" class="btn btn-primary">Submit</button>  
-    </div>  
-  </div>  
-    </div>  
-</form>  
-</body>  
-</html>  
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST" class="post-form" action="/emp">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Enter Details</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Id:</label>
+    <div class="col-sm-4">
+      {{ form.eid }}
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Name:</label>
+    <div class="col-sm-4">
+      {{ form.ename }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Email:</label>
+    <div class="col-sm-4">
+      {{ form.eemail }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Employee Contact:</label>
+    <div class="col-sm-4">
+      {{ form.econtact }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+    </div>
+</form>
+{% endblock content %}
+
 // show.html
 <!DOCTYPE html>  
 <html lang="en">  
