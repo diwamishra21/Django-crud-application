@@ -27,28 +27,8 @@ To create a Django application that performs CRUD operations, follow the followi
 $ django-admin startproject crudexample  
 2. Create an App, using command- 
 $ python3 manage.py startapp employee  
-3. Project Structure - 
 
-Initially, our project looks like this:
-crudexample
-	__init__.py
-	settings.py
-	urls.py
-	wsgi.py
-employee
-	migrations
-		__init__.py
-	__init__.py
-	urls.py
-	admin.py
-	apps.py
-	models.py
-	tests.py
-	views.py
-manage.py
-
-
-4. Database Setup -
+3. Database Setup -
 Create a database djangodb in mysql, and configure into the settings.py file of django project. See the example.
 // settings.py
 DATABASES = {  
@@ -62,7 +42,7 @@ DATABASES = {
     }  
 }  
 
-5. Create a Model- 
+4. Create a Model- 
 Put the following code into models.py file.
 // models.py
 from django.db import models  
@@ -74,7 +54,7 @@ class Employee(models.Model):
     class Meta:  
         db_table = "employee"  
 
-6. Create a ModelForm
+5. Create a ModelForm
 // forms.py
 from django import forms  
 from employee.models import Employee  
@@ -83,7 +63,7 @@ class EmployeeForm(forms.ModelForm):
         model = Employee  
         fields = "__all__"  
 
-7. Create View Functions
+6. Create View Functions
 // views.py
 from django.shortcuts import render, redirect  
 from employee.forms import EmployeeForm  
@@ -125,7 +105,7 @@ def destroy(request, id):
     employee.delete()  
     return redirect("/show")  
 
-8. Provide Routing
+7. Provide Routing
 Provide URL patterns to map with views function.
 // urls.py
 from django.contrib import admin  
@@ -136,7 +116,7 @@ urlpatterns = [
       path('', include('employee.urls')),
 ]  
 
-8.1 Creating routing for employee urls
+8. Creating routing for employee urls
 // employee/urls.py
 from django.urls import path
 from . import views
@@ -187,33 +167,8 @@ and now tell djnago about your css file, run command-
 python manage.py collectstatic
 (it will create a folder assets in main directory with your css file in it. You should run this command always after making changes in your css, js or images.)
 
-
-11. Project Structure
-Crudexample->
-	__init__.py
-	settings.py
-	urls.py
-	wsgi.py
-employee->
-	migrations->
-		__init__.py
-	__init__.py
-	urls.py
-	admin.py
-	apps.py
-	models.py
-	tests.py
-	views.py
-	static->
-		css->
-			style.css
-	templates->
-		index.html
-		show.html
-		edit.html
-	manage.py
 	
-12. Create Migrations
+11. Create Migrations
 Create migrations for the created model employee, use the following command.
 $ python3 manage.py makemigrations  
 After migrations, execute one more command to reflect the migration into the database. But before it, mention name of app (employee) in INSTALLED_APPS of settings.py file.
@@ -244,12 +199,12 @@ Initially, there is no record. So, it shows no record message.
 Well, we have successfully created a CRUD application using Django.
 This complete project can be downloaded here.( https://github.com/diwamishra21/Django-crud-application)
 
-13. Accessing admin panel, for that you have to create a super user using command-
+12. Accessing admin panel, for that you have to create a super user using command-
 python manage.py createsuperuser
 (than follow instructions)
 
 
-Debugging-
+Debugging/basic errors-
 
 1. MySQL connection Error-
 Solution-
