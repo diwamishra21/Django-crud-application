@@ -1,24 +1,25 @@
 Django CRUD (Create Read Update Delete) Example
 Prerequisites before using Django-
 Applications need to install- Python and python virtual environment
-1. Download and Install python
+*. Download and Install python
 2, Create virtual environment(pip should be installed(check version- pip --version))
 Install either virtualenvwrapper or virtualenv(for more info goto- link)
 install virtual environment- pip install virtualenv
 Create virtual environment- virtualenv <virtual-env>
 Now activate virtual env - cd <virtual-env>/Scripts/activate
-3. Install Django using command -
+*. Install Django using command -
 pip install django
 Check django version command-
 	python -m django --version
 
 
 To create a Django application that performs CRUD operations, follow the following steps.
-1. Create a Project
+1. Create a Project, using command- 
 $ django-admin startproject crudexample  
-2. Create an App
+2. Create an App, using command- 
 $ python3 manage.py startapp employee  
-3. Project Structure
+3. Project Structure - 
+
 Initially, our project looks like this:
 crudexample
 	__init__.py
@@ -37,7 +38,8 @@ employee
 	views.py
 manage.py
 
-4. Database Setup
+
+4. Database Setup -
 Create a database djangodb in mysql, and configure into the settings.py file of django project. See the example.
 // settings.py
 DATABASES = {  
@@ -50,7 +52,7 @@ DATABASES = {
         'PORT':'3306'  
     }  
 }  
-5. Create a Model
+5. Create a Model- 
 Put the following code into models.py file.
 // models.py
 from django.db import models  
@@ -75,7 +77,8 @@ from django.shortcuts import render, redirect
 from employee.forms import EmployeeForm  
 from employee.models import Employee  
 
-Create your views here.  
+Create your views here. 
+
 def emp(request):  
     if request.method == "POST":  
         form = EmployeeForm(request.POST)  
@@ -88,12 +91,15 @@ def emp(request):
     else:  
         form = EmployeeForm()  
     return render(request,'index.html',{'form':form})  
+
 def show(request):  
     employees = Employee.objects.all()  
     return render(request,"show.html",{'employees':employees})  
+
 def edit(request, id):  
     employee = Employee.objects.get(id=id)  
-    return render(request,'edit.html', {'employee':employee})  
+    return render(request,'edit.html', {'employee':employee}) 
+
 def update(request, id):  
     employee = Employee.objects.get(id=id)  
     form = EmployeeForm(request.POST, instance = employee)  
@@ -101,6 +107,7 @@ def update(request, id):
         form.save()  
         return redirect("/show")  
     return render(request, 'edit.html', {'employee': employee})  
+
 def destroy(request, id):  
     employee = Employee.objects.get(id=id)  
     employee.delete()  
