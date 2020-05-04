@@ -1,5 +1,11 @@
 Django CRUD (Create Read Update Delete) Example
+
+This project contains-
+ - creating table using ORM
+ - listing, fetching, editing and deleting data from and to database
+
 Prerequisites before using Django-
+basic knowledge of python, html, css and 
 Applications need to install- Python and python virtual environment
 
 a. Download and Install python
