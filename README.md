@@ -1,10 +1,10 @@
-Django CRUD (Create Read Update Delete) Example
+# Django CRUD (Create Read Update Delete) Example
 
 This project contains-
  - creating table using ORM
  - listing, fetching, editing and deleting data from and to database
 
-# For step by step guide open file- stepBystep.docs
+- For step by step guide open file- stepBystep.docs
 
 Prerequisites before using Django-
 basic knowledge of python, html, css and 
@@ -206,7 +206,7 @@ python manage.py createsuperuser
 (than follow instructions)
 
 
-Debugging/basic errors-
+# Debugging/basic errors-
 
 1. MySQL connection Error-
 Solution-
