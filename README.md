@@ -132,12 +132,38 @@ urlpatterns = [
 ]
 
 9. Organize Templates
+
+create a base template for all files- templates/base.html
+To tell django about this file, do some changes in settings.py-
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
 Create a templates folder inside the employee app and create three (index, edit, show) html files inside the directory. files are-
 // index.html
 // show.html
 //edit.html
 
+
 10. Now create css, create a static/css folder in main directory parallel to manage.py and create a file style.css in it.
+changes to do at the end of settings.py-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
 and now tell djnago about your css file, run command-
 python manage.py collectstatic
 (it will create a folder assets in main directory with your css file in it. You should run this command always after making changes in your css, js or images.)
