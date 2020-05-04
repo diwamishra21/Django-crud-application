@@ -35,6 +35,7 @@ employee
 	models.py
 	tests.py
 	views.py
+manage.py
 
 4. Database Setup
 Create a database djangodb in mysql, and configure into the settings.py file of django project. See the example.
@@ -293,15 +294,14 @@ ul {margin:0; padding-left:20px}
 
 .button {font:14px Georgia,Verdana; margin-bottom:10px; padding:8px 10px 9px; border:1px solid #ccc; background:#eee; cursor:pointer}
 .button:hover {border:1px solid #bbb; background:#e3e3e3}
-
 11. Project Structure
-crudexample
+Crudexample->
 	__init__.py
 	settings.py
 	urls.py
 	wsgi.py
-employee
-	migrations
+employee->
+	migrations->
 		__init__.py
 	__init__.py
 	urls.py
@@ -310,6 +310,14 @@ employee
 	models.py
 	tests.py
 	views.py
+	static->
+		css->
+			style.css
+	templates->
+		index.html
+		show.html
+		edit.html
+	manage.py
 	
 12. Create Migrations
 Create migrations for the created model employee, use the following command.
