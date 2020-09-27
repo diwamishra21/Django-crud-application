@@ -152,7 +152,9 @@ TEMPLATES = [
     },
 ]
 
-Create a templates folder inside the employee app and create three (index, edit, show) html files inside the directory. files are-
+Create a templates folder inside the main project and create base.html file there-
+// base.html
+Now a create a templates folder inside employee app and create three (index, edit, show) html files inside the directory. files are-
 // index.html
 // show.html
 //edit.html
